@@ -1,11 +1,22 @@
 # echo-http-header
 
+## Usage
+
+Setup
+
 ```bash
 cd cloudflare-worker/
 
-# local development
+npm install
+```
+
+Deploy
+
+```bash
+# Run locally
 npx wrangler dev
 
-# deploy
+# Deploy to Cloudflare Worker
 npx wrangler deploy
 ```
+

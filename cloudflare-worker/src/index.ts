@@ -12,8 +12,17 @@
  */
 
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello Worker!');
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+		const headers: Record<string, string> = {};
+		request.headers.forEach((value, key) => {
+			headers[key] = value;
+		});
+
+		const jsonHeaders = JSON.stringify(headers, null, 2);
+
+		return new Response(jsonHeaders, {
+			headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+		});
 	},
 } satisfies ExportedHandler<Env>;
 
